@@ -49,7 +49,7 @@ public class DebugCommand implements CommandExecutor, TabCompleter {
         if (strings[0].equalsIgnoreCase("fill")) {
             final Location locationA = debugLocations.get(player.getUniqueId())[0];
             final Location locationB = debugLocations.get(player.getUniqueId())[1];
-            final int size = Math.abs(locationA.getBlockX() - locationB.getBlockX() * (locationA.getBlockY() - locationB.getBlockY()) * (locationA.getBlockZ() - locationB.getBlockZ()));
+            final int size = Math.abs((locationA.getBlockX() - locationB.getBlockX()) * (locationA.getBlockY() - locationB.getBlockY()) * (locationA.getBlockZ() - locationB.getBlockZ()));
             final long start = System.currentTimeMillis();
             if (strings[1].equalsIgnoreCase("random")) {
                 BlockHandler.getInstance().setRandomBlocksAsynchronously(locationA.getWorld(), getLocation(locationA, locationB), (ignored) -> player.sendMessage("Time Taken: " + (System.currentTimeMillis() - start) + "ms")).thenRun(() -> {
@@ -72,7 +72,7 @@ public class DebugCommand implements CommandExecutor, TabCompleter {
                 player.sendMessage("Please set location A and B first");
                 return false;
             }
-            final int size = Math.abs(locationA.getBlockX() - locationB.getBlockX()) * (locationA.getBlockY() - locationB.getBlockY()) * (locationA.getBlockZ() - locationB.getBlockZ());
+            final int size = Math.abs((locationA.getBlockX() - locationB.getBlockX()) * (locationA.getBlockY() - locationB.getBlockY()) * (locationA.getBlockZ() - locationB.getBlockZ()));
             final long start = System.currentTimeMillis();
             if (strings[1].equalsIgnoreCase("random")) {
                 BlockHandler.getInstance().setRandomBlocksChunkSectionAsync(getLocation(locationA, locationB), (ignored) -> player.sendMessage("Blocks set to " + strings[1] + " in the selected area."))
