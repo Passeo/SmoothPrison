@@ -1,0 +1,15 @@
+name: SmoothPrison
+version: '${project.version}'
+main: id.passeo.smoothprison.SmoothPrison
+api-version: '1.20'
+softdepend:
+    - ProtocolLib
+    - ProtocolSupport
+    - ViaVersion
+    - ViaBackwards
+    - ViaRewind
+    - Geyser-Spigot
+commands:
+    smoothprisondebug:
+        description: SmoothPrisonDebug command
+        aliases: [spd]
